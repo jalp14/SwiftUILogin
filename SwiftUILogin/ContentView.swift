@@ -10,9 +10,37 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+        Spacer()
+            HStack(alignment : .center, spacing : 20) {
+                Spacer()
+                
+                PresentationButton(destination: LoginForm(), label: {
+                    Text("Login")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .accentColor(.black)
+                    .padding(10)
+                    .background(Color.red)
+                }) .cornerRadius(CGFloat(9))
+                
+                Spacer()
+                
+                PresentationButton(destination: RegisterForm(), label: {
+                    Text("Register")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .accentColor(.black)
+                        .padding(10)
+                        .background(Color.red)
+                }) .cornerRadius(CGFloat(9))
+                
+            Spacer()
+            } .navigationBarTitle(Text("Welcome to app"))
+            Spacer()
+            }
+        }
     }
-}
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {

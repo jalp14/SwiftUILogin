@@ -13,6 +13,8 @@
 		A296074D22CA2B0C002AF93D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A296074C22CA2B0C002AF93D /* Assets.xcassets */; };
 		A296075022CA2B0C002AF93D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A296074F22CA2B0C002AF93D /* Preview Assets.xcassets */; };
 		A296075322CA2B0C002AF93D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A296075122CA2B0C002AF93D /* LaunchScreen.storyboard */; };
+		A296075D22CA5C9A002AF93D /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A296075C22CA5C9A002AF93D /* LoginForm.swift */; };
+		A2EFF1D922CAAE3E00C8C414 /* RegisterForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EFF1D822CAAE3E00C8C414 /* RegisterForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A296074F22CA2B0C002AF93D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A296075222CA2B0C002AF93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A296075422CA2B0C002AF93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A296075C22CA5C9A002AF93D /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
+		A2EFF1D822CAAE3E00C8C414 /* RegisterForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				A296074622CA2B08002AF93D /* AppDelegate.swift */,
+				A296075C22CA5C9A002AF93D /* LoginForm.swift */,
 				A296074822CA2B08002AF93D /* SceneDelegate.swift */,
 				A296074A22CA2B09002AF93D /* ContentView.swift */,
+				A2EFF1D822CAAE3E00C8C414 /* RegisterForm.swift */,
 				A296074C22CA2B0C002AF93D /* Assets.xcassets */,
 				A296075122CA2B0C002AF93D /* LaunchScreen.storyboard */,
 				A296075422CA2B0C002AF93D /* Info.plist */,
@@ -149,6 +155,8 @@
 				A296074722CA2B08002AF93D /* AppDelegate.swift in Sources */,
 				A296074922CA2B08002AF93D /* SceneDelegate.swift in Sources */,
 				A296074B22CA2B09002AF93D /* ContentView.swift in Sources */,
+				A2EFF1D922CAAE3E00C8C414 /* RegisterForm.swift in Sources */,
+				A296075D22CA5C9A002AF93D /* LoginForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
