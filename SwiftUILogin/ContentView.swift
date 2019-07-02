@@ -35,6 +35,7 @@ struct ContentView : View {
                         .background(Color.red)
                 }) .cornerRadius(CGFloat(9))
                 
+                
             Spacer()
             } .navigationBarTitle(Text("Welcome to app"))
             Spacer()

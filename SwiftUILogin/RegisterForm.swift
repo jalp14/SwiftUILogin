@@ -16,7 +16,9 @@ class Account : BindableObject {
     
     var accountType = 0 { didSet { update()}}
     
-    var name = "Your Name"
+    var name = ""
+    
+    var surname = ""
     
     func update() {
         didChange.send(())
@@ -26,21 +28,45 @@ class Account : BindableObject {
 
 struct RegisterForm : View {
     @ObjectBinding var account = Account()
+    // Used to dismiss the view
+    @Environment(\.isPresented) var isPresented : Binding<Bool>?
     var body: some View {
         NavigationView {
             Form {
-                TextField($account.name) {
-                    UIApplication.shared.keyWindow?.endEditing(true)
-                } .textFieldStyle(.roundedBorder)
-                .padding()
+                HStack {
+                    Text("Please fill out the form to register")
+                        .fontWeight(.semibold)
+                        .font(.caption)
+                    }.padding(.horizontal)
+                
+                Section(header : Text("Personal Details")) {
+                HStack {
+                    Text("Name")
+                    
+                    TextField($account.name) {
+                        UIApplication.shared.keyWindow?.endEditing(true)
+                        } .textFieldStyle(.roundedBorder)
+                        .padding()
+                }
+                    HStack {
+                        Text("Surname")
+                        TextField($account.surname) {
+                            UIApplication.shared.keyWindow?.endEditing(true)
+                        }.textFieldStyle(.roundedBorder)
+                            .padding()
+                    }
+                    
+                }
                 
                 Picker(selection: $account.accountType, label: Text("Select account type")) {
                     ForEach(0..<Account.accountTypes.count) {
                         Text(Account.accountTypes[$0]).tag($0)
                     }
-                    }
+                }
+                
             }
-            .navigationBarTitle(Text("Register"))
+                .navigationBarTitle(Text("Register"))
+                .navigationBarItems(trailing: Button(action: { self.isPresented?.value = false } ) { Text("Done") })
         }
     }
 }
