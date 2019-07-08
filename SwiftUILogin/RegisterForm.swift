@@ -18,6 +18,10 @@ class Account : BindableObject {
     
     var name = ""
     
+    var username = ""
+    
+    var password = ""
+    
     var surname = ""
     
     func update() {
@@ -30,43 +34,75 @@ struct RegisterForm : View {
     @ObjectBinding var account = Account()
     // Used to dismiss the view
     @Environment(\.isPresented) var isPresented : Binding<Bool>?
+    @State var didShowAlert = false
     var body: some View {
         NavigationView {
-            Form {
-                HStack {
-                    Text("Please fill out the form to register")
-                        .fontWeight(.semibold)
-                        .font(.caption)
-                    }.padding(.horizontal)
-                
-                Section(header : Text("Personal Details")) {
-                HStack {
-                    Text("Name")
-                    
-                    TextField($account.name) {
-                        UIApplication.shared.keyWindow?.endEditing(true)
-                        } .textFieldStyle(.roundedBorder)
+            VStack {
+                Form {
+                    VStack {
+                        
+                        HStack {
+                            Text("Name")
+                            TextField($account.name) {
+                                UIApplication.shared.windows[0].endEditing(true)
+                            }.textFieldStyle(.roundedBorder)
+                                .colorScheme(.light)
+                                .padding(10)
+                        }
+                        
+                        HStack {
+                            Text("Surname")
+                            TextField($account.surname) {
+                                UIApplication.shared.windows[0].endEditing(true)
+                            }.textFieldStyle(.roundedBorder)
+                                .colorScheme(.light)
+                                .padding(10)
+                        }
+                        
+                        HStack {
+                            Text("Username")
+                            TextField($account.username) {
+                                UIApplication.shared.windows[0].endEditing(true)
+                            }.textFieldStyle(.roundedBorder)
+                                .colorScheme(.light)
+                                .padding(10)
+                        }
+                        
+                        HStack {
+                            Text("Password")
+                            SecureField($account.password) {
+                                UIApplication.shared.windows[0].endEditing(true)
+                            }.textFieldStyle(.roundedBorder)
+                                .colorScheme(.light)
+                                .padding(10)
+                        }
+                        
+                        
+                        Picker(selection: $account.accountType, label: Text("Select account type")) {
+                            ForEach(0..<Account.accountTypes.count) {
+                                Text(Account.accountTypes[$0]).tag($0)
+                            }
+                        }
+                        
+                    }
+                    .navigationBarTitle(Text("Register"))
+                        .navigationBarItems(trailing: Button(action: { self.isPresented?.value = false } ) { Text("Done") })
+                }
+                Button(action: {
+                    self.didShowAlert = true
+                }) {
+                    Text("Register")
+                        .accentColor(.black)
                         .padding()
+                        .background(Color.red)
                 }
-                    HStack {
-                        Text("Surname")
-                        TextField($account.surname) {
-                            UIApplication.shared.keyWindow?.endEditing(true)
-                        }.textFieldStyle(.roundedBorder)
-                            .padding()
-                    }
-                    
+                .cornerRadius(9)
+                    .presentation($didShowAlert) {
+                        Alert(title: Text("Success"), message: Text("Registered Successfull!"), dismissButton: .default(Text("OK")))
                 }
-                
-                Picker(selection: $account.accountType, label: Text("Select account type")) {
-                    ForEach(0..<Account.accountTypes.count) {
-                        Text(Account.accountTypes[$0]).tag($0)
-                    }
-                }
+                .padding(20)
                 
             }
-                .navigationBarTitle(Text("Register"))
-                .navigationBarItems(trailing: Button(action: { self.isPresented?.value = false } ) { Text("Done") })
         }
     }
 }

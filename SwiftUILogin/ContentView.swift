@@ -11,38 +11,37 @@ import SwiftUI
 struct ContentView : View {
     var body: some View {
         NavigationView {
-        Spacer()
-            HStack(alignment : .center, spacing : 20) {
-                Spacer()
-                
-                PresentationButton(destination: LoginForm(), label: {
-                    Text("Login")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .accentColor(.black)
-                    .padding(10)
-                    .background(Color.red)
-                }) .cornerRadius(CGFloat(9))
-                
-                Spacer()
-                
-                PresentationButton(destination: RegisterForm(), label: {
-                    Text("Register")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .accentColor(.black)
-                        .padding(10)
-                        .background(Color.red)
-                }) .cornerRadius(CGFloat(9))
-                
-                
-                
-            Spacer()
-            } .navigationBarTitle(Text("Welcome to app"))
-            Spacer()
+            VStack {
+                VStack {
+                    Text("New User? Click the button below to make a new account")
+                        .padding()
+                        .lineLimit(3)
+                    PresentationLink(destination: RegisterForm(), label: {
+                        Text("Register")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .accentColor(.black)
+                            .padding(10)
+                            .background(Color.red)
+                    }).cornerRadius(9)
+                }
+                VStack {
+                    Text("Already registered? Click the button below to log back in")
+                        .padding()
+                        .lineLimit(3)
+                    PresentationLink(destination: LoginForm(), label: {
+                        Text("Login")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .accentColor(.black)
+                            .padding(10)
+                            .background(Color.red)
+                    }).cornerRadius(9)
+                }.navigationBarTitle(Text("My App"))
             }
         }
     }
+}
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
